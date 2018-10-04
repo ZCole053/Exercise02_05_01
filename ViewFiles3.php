@@ -10,7 +10,7 @@
 <h2>View Files 3</h2>
     <?php
     $dir = "../Exercise02_01_01";
-    //opens and closed the document for us
+    //puts file in array for us
     $dirEntries = scandir($dir);
 
     $openDir = opendir($dir);
@@ -34,11 +34,16 @@
             }else{
                 echo htmlentities($entry);
             }
+            //seeing we can get the owner of the file
+            echo "</td><td align='center'>". fileowner($fullEntryName);
+            //file permissions
             if(is_file($fullEntryName)){
                 $perms = fileperms($fullEntryName);
                 $perms = decoct($perms % 01000);
                 echo "</td><td align='center'>0$perms";
                 echo "</td><td align='right'>". number_format(filesize($fullEntryName),0). " bytes";
+            }else{
+                echo "</td><td colspan='2' align ='center'>&LT;DIR&GT;";
             }
             
             echo "</tr></td>";

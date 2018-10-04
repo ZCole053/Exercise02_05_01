@@ -10,7 +10,7 @@
 <h2>View Files 2</h2>
     <?php
     $dir = "../Exercise02_01_01";
-    //opens and closed the document for us
+    //scandir places files in an array for us
     $dirEntries = scandir($dir);
 
     $openDir = opendir($dir);
