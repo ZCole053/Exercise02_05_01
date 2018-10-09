@@ -19,7 +19,7 @@
             //echo print_r($_FILES['newFile']); debug
             //if else to move file                  //multi dimntional array
             if(move_uploaded_file($_FILES['newFile']['tmp_name'], $dir . "/". $_FILES['newFile']['name']) === true){
-                //read and write the read and read
+                //read and write,then read, read
                 //chmod($dir . "/". $_FILES['newFile']['name'], 0644);
                 echo "File \"". htmlentities($_FILES['newFile']['name']) . "\" successfully uploaded.<br>\n";
             }else{
