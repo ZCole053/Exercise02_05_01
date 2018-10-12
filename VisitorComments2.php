@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Visitor Comments</title>
+    <title>Visitor Comments2 </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="modernizr.custom.65897"></script>
 </head>
@@ -31,6 +31,22 @@
                 echo "\$timeStamp: $timeStamp<br>";//debug
                 $saveFileName = "$dir/Comment.$timeStamp.txt";
                 echo "\$saveFileName: $saveFileName<br>";//debug
+
+                //opens the file make it writable\binary mode
+                $fileHandle = fopen($saveFileName, "wb");
+                //failure
+                if($fileHandle === false){
+                    echo "There was an error creating \"". htmlentities($saveFileName) . "\".<br>\n";
+                    //success
+                }else{          //success means fwrite is > 0
+                    if(fwrite($fileHandle, $saveString) > 0 ){
+                        echo "Successfully wrote to file  \"". htmlentities($saveFileName) . "\".<br>\n";
+                    }else{
+                        echo "There was an error writting to \"". htmlentities($saveFileName) . "\".<br>\n";
+                    }
+                    fclose($fileHandle);
+                }
+
                 if(file_put_contents($saveFileName, $saveString) > 0){
                     echo "File \"" . htmlentities($saveFileName) . "\" successfully saved.<br>\n";
 
@@ -46,8 +62,8 @@
     }
     ?>
     <!-- web form -->
-    <h2>Visitor Comments</h2>
-    <form action="VisitorComments.php" method="post">
+    <h2>Visitor Comments 2</h2>
+    <form action="VisitorComments2.php" method="post">
         Your name: <input type="text" name="name"> <br>
         Your email: <input type="email" name="email"> <br>
         <textarea name="comment" cols="100" rows="6">
