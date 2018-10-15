@@ -40,7 +40,7 @@
                     echo "There was an error creating \"". htmlentities($saveFileName) . "\".<br>\n";
                     //success
                 }else{        
-                    //  
+                    //locks the file so others can't write to it  
                     if(flock($fileHandle, LOCK_EX)){
                         //success means fwrite is > 0\
                         if(fwrite($fileHandle, $saveString) > 0 ){
@@ -71,7 +71,7 @@
     ?>
     <!-- web form -->
     <h2>Visitor Comments 3</h2>
-    <form action="VisitorComments2.php" method="post">
+    <form action="VisitorComments3.php" method="post">
         Your name: <input type="text" name="name"> <br>
         Your email: <input type="email" name="email"> <br>
         <textarea name="comment" cols="100" rows="6">
